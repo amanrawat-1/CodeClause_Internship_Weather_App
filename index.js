@@ -5,9 +5,9 @@ const humidity = document.getElementById('humidity')
 const wind_speed = document.getElementById('wind-speed');
 const description = document.querySelector('.description');
 const temperature= document.querySelector('.temperature');
-const location_not_found = document.querySelector('.location-not-found')
-const weather_body = document.querySelector('.weather-body')
-const video = document.getElementById('video')
+const location_not_found = document.querySelector('.location-not-found');
+const weather_body = document.querySelector('.weather-body');
+const video = document.getElementById('video');
 
 // Create an <audio> element and set its attributes
 const audioElement = document.createElement('audio');
@@ -27,7 +27,13 @@ async function checkWeather(city){
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}` ;
 
     const weather_data = await fetch(`${url}`).then(response => response.json()) ;
-
+    
+    if(inputBox.value === ""){
+         location_not_found.style.display = "flex";
+        weather_body.style.display = "none";
+        return;
+    }
+    
     if(weather_data.cod === `404`){
         location_not_found.style.display = "flex";
         weather_body.style.display = "none";
