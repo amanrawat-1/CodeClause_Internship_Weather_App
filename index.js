@@ -43,7 +43,7 @@ async function checkWeather(city){
 
     switch(weather_data.weather[0].main){
 
-        case 'Broken' :
+        case 'Clouds' :
              weather_img.src = "./cloud.png";
              video.src = "./Cloudyy.mp4";
              audioElement.src = "./cloudyyyy.mp4";
@@ -73,10 +73,14 @@ async function checkWeather(city){
              audioElement.src= "./Hazeyy.mp4";
         break;
 
-        default:
+        case 'Snow' :
             weather_img.src = "./snow.png";
             video.src = "./Snow.mp4";
             audioElement.src = "./snowyy.mp4";
+        break;
+
+        default:
+            video.src = "./primary video.mp4"
 
     }
 }
